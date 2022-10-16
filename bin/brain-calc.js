@@ -2,6 +2,8 @@
 
 import game from '../src/index.js';
 
+const desc = 'What is the result of the expression?';
+
 let expectedAnswer;
 
 const generateQuestion = () => {
@@ -20,36 +22,4 @@ const generateQuestion = () => {
 
 const findCorrectAnswer = () => expectedAnswer;
 
-const desc = 'What is the result of the expression?';
-
 game(desc, generateQuestion, findCorrectAnswer);
-
-/*
-let answer;
-
-const calcGame = () => {
-  console.log('Question:', generateQuestion());
-  answer = readLineSync.question('Your answer: ');
-  if (answer === expectedAnswer.toString()) {
-    return true;
-  }
-  return false;
-};
-
-let lost;
-
-console.log('What is the result of the expression?');
-for (let i = 0; i < 3; i += 1) {
-  if (calcGame()) {
-    console.log('Correct!');
-  } else {
-    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'.
-    \nLet's try again, ${user.name}!`);
-    lost = true;
-    break;
-  }
-}
-
-if (!lost) {
-  console.log(`Congratulations, ${user.name}!`);
-} */
