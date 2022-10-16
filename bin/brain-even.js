@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
-import readLineSync from 'readline-sync';
-import { greeting, user } from '../src/cli.js';
+import game from '../src/index.js';
 
-greeting();
+const desc = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 const isEven = (num) => {
   let result;
@@ -15,33 +14,13 @@ const isEven = (num) => {
   return result;
 };
 
-let answer;
-let expectedAnswer;
+let question;
 
-const evenGame = () => {
-  const number = Math.floor(Math.random() * 100);
-  expectedAnswer = isEven(number);
-  console.log(`Question: ${number}`);
-  answer = readLineSync.question('Your answer: ');
-  if (answer === expectedAnswer) {
-    return true;
-  }
-  return false;
+const generateQuestion = () => {
+  question = Math.floor(Math.random() * 100);
+  return question;
 };
 
-let lost;
+const findCorrectAnswer = () => isEven(question);
 
-console.log('Answer "yes" if the number is even, otherwise answer "no".');
-for (let i = 0; i < 3; i += 1) {
-  if (evenGame()) {
-    console.log('Correct!');
-  } else {
-    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'. \nLet's try again, ${user.name}!`);
-    lost = true;
-    break;
-  }
-}
-
-if (!lost) {
-  console.log(`Congratulations, ${user.name}!`);
-}
+game(desc, generateQuestion, findCorrectAnswer);
