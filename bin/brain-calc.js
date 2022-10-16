@@ -1,16 +1,12 @@
 #!/usr/bin/env node
 
-import readLineSync from 'readline-sync';
-import { greeting, user } from '../src/cli.js';
+import game from '../src/index.js';
 
-greeting();
-
-let operatorIndex;
 let expectedAnswer;
 
 const generateQuestion = () => {
   const numbers = [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)];
-  operatorIndex = (Math.floor(Math.random() * 2.99)); // 0 = "+", 1 = "-", 2 = "*"
+  const operatorIndex = (Math.floor(Math.random() * 2.99)); // 0 = "+", 1 = "-", 2 = "*"
   if (operatorIndex === 0) {
     expectedAnswer = numbers[0] + numbers[1];
     return `${numbers[0]} + ${numbers[1]}`;
@@ -22,6 +18,13 @@ const generateQuestion = () => {
   return `${numbers[0]} * ${numbers[1]}`;
 };
 
+const findCorrectAnswer = () => expectedAnswer;
+
+const desc = 'What is the result of the expression?';
+
+game(desc, generateQuestion, findCorrectAnswer);
+
+/*
 let answer;
 
 const calcGame = () => {
@@ -40,7 +43,8 @@ for (let i = 0; i < 3; i += 1) {
   if (calcGame()) {
     console.log('Correct!');
   } else {
-    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'. \nLet's try again, ${user.name}!`);
+    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'.
+    \nLet's try again, ${user.name}!`);
     lost = true;
     break;
   }
@@ -48,4 +52,4 @@ for (let i = 0; i < 3; i += 1) {
 
 if (!lost) {
   console.log(`Congratulations, ${user.name}!`);
-}
+} */
