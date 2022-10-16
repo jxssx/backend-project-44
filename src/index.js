@@ -9,11 +9,11 @@ const game = (desc, generateQuestion, expectedAnswer) => {
   for (let i = 0; i < 3; i += 1) {
     console.log('Question:', generateQuestion());
     const answer = readLineSync.question('Your answer: ');
-    if (answer === expectedAnswer) {
+    if (answer === expectedAnswer().toString()) {
       console.log('Correct!');
     } else {
       lost = true;
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'. \nLet's try again, ${user.name}!`);
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${expectedAnswer()}'. \nLet's try again, ${user.name}!`);
       break;
     }
   }
