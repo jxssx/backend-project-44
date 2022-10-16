@@ -16,14 +16,14 @@ const isEven = (num) => {
 };
 
 let answer;
-let expectedResult;
+let expectedAnswer;
 
 const evenGame = () => {
   const number = Math.floor(Math.random() * 100);
-  expectedResult = isEven(number);
+  expectedAnswer = isEven(number);
   console.log(`Question: ${number}`);
   answer = readLineSync.question('Your answer: ');
-  if (answer === expectedResult) {
+  if (answer === expectedAnswer) {
     return true;
   }
   return false;
@@ -36,7 +36,7 @@ for (let i = 0; i < 3; i += 1) {
   if (evenGame()) {
     console.log('Correct!');
   } else {
-    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${expectedResult}'. \nLet's try again, ${user.name}!`);
+    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'. \nLet's try again, ${user.name}!`);
     lost = true;
     break;
   }
