@@ -1,7 +1,7 @@
 import readLineSync from 'readline-sync';
 import { greeting, user } from './cli.js';
 
-let lost;
+let lost = false;
 
 const game = (desc, generateQuestion, expectedAnswer) => {
   greeting();
@@ -17,10 +17,9 @@ const game = (desc, generateQuestion, expectedAnswer) => {
       break;
     }
   }
+  if (!lost) {
+    console.log(`Congratulations, ${user.name}!`);
+  }
 };
-
-if (!lost) {
-  console.log(`Congratulations, ${user.name}!`);
-}
 
 export default game;
