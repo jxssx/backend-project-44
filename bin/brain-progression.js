@@ -8,7 +8,7 @@ let expectedAnswer;
 
 const generateQuestion = () => {
   let question = '';
-  const unknownPosition = Math.floor(Math.random() * 10);
+  const unknownPosition = Math.floor(Math.random() * 9) + 1;
   const startingPoint = Math.floor(Math.random() * 20);
   const difference = Math.floor(Math.random() * 9) + 1;
   let newStartingPoint;
