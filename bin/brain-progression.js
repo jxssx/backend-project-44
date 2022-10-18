@@ -10,7 +10,7 @@ const generateQuestion = () => {
   let question = '';
   const unknownPosition = Math.floor(Math.random() * 10);
   const startingPoint = Math.floor(Math.random() * 20);
-  const difference = Math.floor(Math.random() * 10);
+  const difference = Math.floor(Math.random() * 9) + 1;
   let newStartingPoint;
   for (let i = 0; i < unknownPosition; i += 1) {
     question += `${startingPoint + difference * i} `;
