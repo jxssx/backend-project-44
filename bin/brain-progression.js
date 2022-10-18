@@ -21,7 +21,7 @@ const generateQuestion = () => {
   for (let i = 0; i < 10 - unknownPosition; i += 1) {
     question += `${newStartingPoint + difference * i} `;
   }
-  return question;
+  return question.trim();
 };
 
 const findCorrectAnswer = () => expectedAnswer;
