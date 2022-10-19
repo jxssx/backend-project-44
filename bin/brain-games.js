@@ -3,4 +3,5 @@
 import { greeting, user } from '../src/cli.js';
 
 greeting();
-console.log(`Hello, ${user.name}!`);
+// eslint-disable-next-line prefer-template
+console.log('Hello, ' + user.name);
