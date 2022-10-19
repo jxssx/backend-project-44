@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
-import { greeting } from '../src/cli.js';
+import readLineSync from 'readline-sync';
 
-greeting();
+const username = readLineSync.question('May i have your name? ');
+console.log(`Hello, ${username}!`);
