@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import game from '../index.js';
-
 const desc = 'Find the greatest common divisor of given numbers.';
 
 let firstNumber;
