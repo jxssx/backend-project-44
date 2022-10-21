@@ -12,13 +12,9 @@ const isEven = (num) => {
   return result;
 };
 
-let question;
-
 const generateQuestion = () => {
-  question = Math.floor(Math.random() * 100);
-  return question;
+  const question = Math.floor(Math.random() * 100);
+  return [question, isEven(question)];
 };
 
-const findCorrectAnswer = () => isEven(question);
-
-export { desc, generateQuestion, findCorrectAnswer };
+export { desc, generateQuestion };
