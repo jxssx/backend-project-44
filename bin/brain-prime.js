@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
 import game from '../src/index.js';
-import { desc, generateQuestion, findCorrectAnswer } from '../src/games/prime.js';
+import { desc, generateQuestion } from '../src/games/prime.js';
 
-game(desc, generateQuestion, findCorrectAnswer);
+game(desc, generateQuestion);

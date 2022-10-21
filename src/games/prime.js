@@ -2,22 +2,7 @@
 
 const desc = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-let question;
-const reserved = [];
-
-const generateQuestion = () => {
-  for (let i = 0; i < 10; i += 1) {
-    question = Math.floor((Math.random() * 19) + 1);
-    if (!reserved.includes(question)) {
-      reserved.push(question);
-      return question;
-    }
-  }
-  question = Math.floor((Math.random() * 19) + 1);
-  return question;
-};
-
-const findCorrectAnswer = () => {
+const isPrime = (question) => {
   if (question <= 3) {
     return 'yes';
   }
@@ -32,4 +17,17 @@ const findCorrectAnswer = () => {
   return 'yes';
 };
 
-export { desc, generateQuestion, findCorrectAnswer };
+const generateQuestion = () => {
+  const used = [];
+  for (let i = 0; i < 10; i += 1) {
+    const question = Math.floor((Math.random() * 19) + 1);
+    if (!used.includes(question)) {
+      used.push(question);
+      return [question, `${isPrime(question)}`];
+    }
+  }
+  const question = Math.floor((Math.random() * 19) + 1);
+  return [question, isPrime(question)];
+};
+
+export { desc, generateQuestion };
