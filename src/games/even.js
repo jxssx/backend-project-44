@@ -1,20 +1,18 @@
-#!/usr/bin/env node
+import { generateRandomNumber1to100 } from '../helpers.js';
+import game from '../index.js';
 
 const desc = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 const isEven = (num) => {
-  let result;
   if (num % 2 === 0) {
-    result = 'yes';
-  } else {
-    result = 'no';
+    return true;
   }
-  return result;
+  return false;
 };
 
 const generateQuestion = () => {
-  const question = Math.floor(Math.random() * 100);
-  return [question, isEven(question)];
+  const question = generateRandomNumber1to100();
+  return [question, `${isEven(question) ? 'yes' : 'no'}`];
 };
 
-export { desc, generateQuestion };
+export default () => game(desc, generateQuestion);
