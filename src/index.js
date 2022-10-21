@@ -10,13 +10,13 @@ const game = (desc, generateQuestion) => {
     const [question, correctAnswer] = generateQuestion();
     console.log('Question:', question);
     const answer = readLineSync.question('Your answer: ');
-    if (answer === correctAnswer) {
-      console.log('Correct!');
-    } else {
-      return console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. \nLet's try again, ${name}!`);
+    if (answer !== correctAnswer) {
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      return console.log(`Let's try again, ${name}!`);
     }
+    console.log('Correct!');
   }
-  return console.log(`Congratulations, ${name}!`);
+  return console.log(`Congratulations, ${name}!`); // если тут не будет return, линтер выдает ошибку 'Expected to return a value at the end of arrow function'
 };
 
 export default game;
