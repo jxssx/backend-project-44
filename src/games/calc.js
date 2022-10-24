@@ -1,23 +1,27 @@
-import { generateRandomNumber1to100 } from '../helpers.js';
+import generateRandomNumber from '../helpers.js';
 import game from '../index.js';
 
 const desc = 'What is the result of the expression?';
 
-const calculate = (firstNumber, secondNumber, operatorIndex) => {
-  if (operatorIndex === 0) {
-    return firstNumber + secondNumber;
-  } if (operatorIndex === 1) {
-    return firstNumber - secondNumber;
+const calculate = (firstNumber, secondNumber, operator) => {
+  switch (operator) {
+    case '+':
+      return firstNumber + secondNumber;
+    case '-':
+      return firstNumber - secondNumber;
+    case '*':
+      return firstNumber * secondNumber;
+    default:
+      return null;
   }
-  return firstNumber * secondNumber;
 };
 
 const generateQuestion = () => {
-  const firstNumber = generateRandomNumber1to100();
-  const secondNumber = generateRandomNumber1to100();
+  const firstNumber = generateRandomNumber(1, 100);
+  const secondNumber = generateRandomNumber(1, 100);
   const operators = ['+', '-', '*'];
-  const operatorIndex = (Math.floor(Math.random() * 2.99)); // 0 = "+", 1 = "-", 2 = "*"
-  return [`${firstNumber} ${operators[operatorIndex]} ${secondNumber}`, `${calculate(firstNumber, secondNumber, operatorIndex)}`];
+  const operator = operators[generateRandomNumber(0, operators.length - 0.1)];
+  return [`${firstNumber} ${operator} ${secondNumber}`, `${calculate(firstNumber, secondNumber, operator)}`];
 };
 
 export default () => game(desc, generateQuestion);

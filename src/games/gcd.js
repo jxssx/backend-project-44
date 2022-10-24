@@ -1,22 +1,22 @@
-import { generateRandomNumber1to100 } from '../helpers.js';
+import generateRandomNumber from '../helpers.js';
 import game from '../index.js';
 
 const desc = 'Find the greatest common divisor of given numbers.';
 
 const findGcd = (firstNumber, secondNumber) => {
-  const leastNumber = Math.min(firstNumber, secondNumber);
-  for (let i = 1; i <= leastNumber; i += 1) {
-    const currentDevisor = leastNumber / i;
-    if (firstNumber % currentDevisor === 0 && secondNumber % currentDevisor === 0) {
-      return currentDevisor;
-    }
+  if (!secondNumber) {
+    return firstNumber;
   }
-  return 1;
+  const remainder = firstNumber % secondNumber;
+  return findGcd(secondNumber, remainder);
 };
 
+/* const findGcd = (num1, num2) => (!num2 ? num1 : findGcd(num2, num1 % num2);
+- такой же однострочник. не знаю, стоит ли использовать. мне показалось, что он слабо читается */
+
 const generateQuestion = () => {
-  const firstNumber = generateRandomNumber1to100();
-  const secondNumber = generateRandomNumber1to100();
+  const firstNumber = generateRandomNumber(1, 100);
+  const secondNumber = generateRandomNumber(1, 100);
   return [`${firstNumber} ${secondNumber}`, `${findGcd(firstNumber, secondNumber)}`];
 };
 

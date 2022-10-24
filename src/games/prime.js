@@ -1,17 +1,14 @@
-import { generateRandomNumber1to100 } from '../helpers.js';
+import generateRandomNumber from '../helpers.js';
 import game from '../index.js';
 
 const desc = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const isPrime = (question) => {
-  if (question <= 3) {
-    return true;
-  }
-  if (question % 2 === 0) {
+const isPrime = (number) => {
+  if (number < 2) {
     return false;
   }
-  for (let i = 3; i < question ** 0.5 + 1; i += 2) {
-    if (question % i === 0) {
+  for (let i = 2; i < number ** 0.5 + 1; i += 1) {
+    if (number % i === 0) {
       return false;
     }
   }
@@ -19,7 +16,7 @@ const isPrime = (question) => {
 };
 
 const generateQuestion = () => {
-  const question = generateRandomNumber1to100();
+  const question = generateRandomNumber(1, 100);
   return [question, `${isPrime(question) ? 'yes' : 'no'}`];
 };
 
